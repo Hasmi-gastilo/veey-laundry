@@ -15,6 +15,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
     tailwind.config = {
@@ -438,27 +439,27 @@
                 hari ini.</p>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-12">
               <!-- REGULER 3 HARI -->
               <div class="glass-card rounded-2xl overflow-hidden hover-lift animate-on-scroll">
-                <div class="bg-gradient-to-r from-primary-500 to-primary-600 p-6">
-                  <h3 class="text-xl font-bold text-white">REGULER 3 HARI</h3>
+                <div class="bg-gradient-to-r from-primary-500 to-primary-600 p-3 sm:p-6">
+                  <h3 class="text-sm sm:text-xl font-bold text-white text-center sm:text-left">REGULER 3 HARI</h3>
                 </div>
-                <div class="p-6">
-                  <ul class="space-y-4 text-slate-600 dark:text-slate-400 mb-6">
+                <div class="p-3 sm:p-6">
+                  <ul class="space-y-2 sm:space-y-4 text-slate-600 dark:text-slate-400 mb-2 sm:mb-6 text-[10px] sm:text-sm">
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-primary-500">•</span> Cuci Kering
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-primary-500">•</span> Cuci Kering
                         Setrika</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">5k</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">5k</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-primary-500">•</span> Cuci Kering
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-primary-500">•</span> Cuci Kering
                         Lipat</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">4k</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">4k</span>
                     </li>
                     <li class="flex justify-between items-center pb-2">
-                      <span class="flex items-center gap-2"><span class="text-primary-500">•</span> Setrika</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">4k</span>
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-primary-500">•</span> Setrika</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">4k</span>
                     </li>
                   </ul>
                 </div>
@@ -466,33 +467,33 @@
 
               <!-- EXPRESS 1 HARI -->
               <div
-                class="glass-card rounded-2xl overflow-hidden hover-lift animate-on-scroll relative shadow-2xl scale-105 border-2 border-accent-500">
-                <div class="bg-gradient-to-r from-accent-500 to-accent-600 p-6">
-                  <h3 class="text-xl font-bold text-white">EXPRESS 1 HARI</h3>
+                class="glass-card rounded-2xl overflow-hidden hover-lift animate-on-scroll relative shadow-2xl scale-100 sm:scale-105 border-2 border-accent-500">
+                <div class="bg-gradient-to-r from-accent-500 to-accent-600 p-3 sm:p-6">
+                  <h3 class="text-sm sm:text-xl font-bold text-white text-center sm:text-left">EXPRESS 1 HARI</h3>
                 </div>
-                <div class="p-6">
-                  <ul class="space-y-4 text-slate-600 dark:text-slate-400 mb-6">
+                <div class="p-3 sm:p-6">
+                  <ul class="space-y-2 sm:space-y-4 text-slate-600 dark:text-slate-400 mb-2 sm:mb-6 text-[10px] sm:text-sm">
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-accent-500">•</span> Cuci Kering
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-accent-500">•</span> Cuci Kering
                         Setrika</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">9k</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">9k</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-accent-500">•</span> Cuci Kering
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-accent-500">•</span> Cuci Kering
                         Lipat</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">7k</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">7k</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-accent-500">•</span> Setrika</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">7k</span>
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-accent-500">•</span> Setrika</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">7k</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-accent-500">•</span> Cuci Basah</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">4k</span>
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-accent-500">•</span> Cuci Basah</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">4k</span>
                     </li>
                     <li class="flex justify-between items-center pb-2">
-                      <span class="flex items-center gap-2"><span class="text-accent-500">•</span> Pengeringan</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">5k</span>
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-accent-500">•</span> Pengeringan</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">5k</span>
                     </li>
                   </ul>
                 </div>
@@ -501,32 +502,32 @@
               <!-- SUPER EXPRESS 3 JAM -->
               <div
                 class="glass-card rounded-2xl overflow-hidden hover-lift animate-on-scroll border-2 border-orange-500">
-                <div class="bg-gradient-to-r from-orange-500 to-orange-600 p-6">
-                  <h3 class="text-xl font-bold text-white">SUPER EXPRESS 3 JAM</h3>
+                <div class="bg-gradient-to-r from-orange-500 to-orange-600 p-3 sm:p-6">
+                  <h3 class="text-sm sm:text-xl font-bold text-white text-center sm:text-left">SUPER EXPRESS</h3>
                 </div>
-                <div class="p-6">
-                  <ul class="space-y-4 text-slate-600 dark:text-slate-400 mb-6">
+                <div class="p-3 sm:p-6">
+                  <ul class="space-y-2 sm:space-y-4 text-slate-600 dark:text-slate-400 mb-2 sm:mb-6 text-[10px] sm:text-sm">
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-orange-500">•</span> Cuci Kering
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-orange-500">•</span> Cuci Kering
                         Setrika</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">15k</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">15k</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-orange-500">•</span> Cuci Kering
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-orange-500">•</span> Cuci Kering
                         Lipat</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">13k</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">13k</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-orange-500">•</span> Setrika</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">12k</span>
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-orange-500">•</span> Setrika</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">12k</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <span class="flex items-center gap-2"><span class="text-orange-500">•</span> Cuci Basah</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">6k</span>
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-orange-500">•</span> Cuci Basah</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">6k</span>
                     </li>
                     <li class="flex justify-between items-center pb-2">
-                      <span class="flex items-center gap-2"><span class="text-orange-500">•</span> Pengeringan</span>
-                      <span class="font-bold text-slate-900 dark:text-white text-lg">7k</span>
+                      <span class="flex items-center gap-1 sm:gap-2"><span class="text-orange-500">•</span> Pengeringan</span>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-lg">7k</span>
                     </li>
                   </ul>
                 </div>
@@ -562,11 +563,11 @@
               </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
 
               <!-- Pakaian Harian -->
               <div
-                class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(59,130,246,0.15)] transition-all duration-500 hover:-translate-y-2 border border-white/50 dark:border-slate-700/50 overflow-hidden cursor-default">
+                class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-[2rem] p-4 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(59,130,246,0.15)] transition-all duration-500 hover:-translate-y-2 border border-white/50 dark:border-slate-700/50 overflow-hidden cursor-default">
                 <div
                   class="absolute -right-10 -top-10 w-40 h-40 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700">
                 </div>
@@ -574,29 +575,28 @@
                   class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                 </div>
 
-                <div class="relative z-10">
+                <div class="relative z-10 text-center sm:text-left">
                   <div
-                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-slate-700/50 dark:to-slate-800 flex items-center justify-center mb-6 shadow-sm border border-blue-100/50 dark:border-blue-900/30 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl mx-auto sm:mx-0 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-slate-700/50 dark:to-slate-800 flex items-center justify-center mb-3 sm:mb-6 shadow-sm border border-blue-100/50 dark:border-blue-900/30 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                      class="text-blue-500">
+                      class="text-blue-500 w-6 h-6 sm:w-8 sm:h-8">
                       <path
                         d="M20.38 3.46 16 2a8.86 8.86 0 0 1-3.99 5.38 8.87 8.87 0 0 1-8.02 0L2 3.46 4.34 9H6v13h12V9h1.66l2.72-5.54z" />
                     </svg>
                   </div>
                   <h3
-                    class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    class="text-sm sm:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                     Pakaian Harian</h3>
-                  <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                    Kemeja, kaos, celana, dan pakaian santai. Dicuci bersih maksimal, anti-apek, dan disetrika rapi siap
-                    pakai.
+                  <p class="text-slate-500 dark:text-slate-400 text-[10px] sm:text-sm leading-relaxed font-medium">
+                    Kemeja, kaos, celana, dan pakaian santai. Bersih maksimal dan disetrika rapi.
                   </p>
                 </div>
               </div>
 
               <!-- Sepatu & Sneaker -->
               <div
-                class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(249,115,22,0.15)] transition-all duration-500 hover:-translate-y-2 border border-white/50 dark:border-slate-700/50 overflow-hidden cursor-default">
+                class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-[2rem] p-4 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(249,115,22,0.15)] transition-all duration-500 hover:-translate-y-2 border border-white/50 dark:border-slate-700/50 overflow-hidden cursor-default">
                 <div
                   class="absolute -right-10 -top-10 w-40 h-40 bg-orange-400/20 dark:bg-orange-500/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700">
                 </div>
@@ -604,12 +604,12 @@
                   class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-orange-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                 </div>
 
-                <div class="relative z-10">
+                <div class="relative z-10 text-center sm:text-left">
                   <div
-                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-slate-700/50 dark:to-slate-800 flex items-center justify-center mb-6 shadow-sm border border-orange-100/50 dark:border-orange-900/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl mx-auto sm:mx-0 bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-slate-700/50 dark:to-slate-800 flex items-center justify-center mb-3 sm:mb-6 shadow-sm border border-orange-100/50 dark:border-orange-900/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                      class="text-orange-500">
+                      class="text-orange-500 w-6 h-6 sm:w-8 sm:h-8">
                       <path
                         d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
                       <path d="M20 3v4" />
@@ -619,18 +619,17 @@
                     </svg>
                   </div>
                   <h3
-                    class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                    class="text-sm sm:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors leading-tight">
                     Sepatu & Sneaker</h3>
-                  <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                    Perawatan mendalam (Deep Cleaning) untuk sepatu kanvas, kulit, hingga suede agar kembali kinclong
-                    seperti baru.
+                  <p class="text-slate-500 dark:text-slate-400 text-[10px] sm:text-sm leading-relaxed font-medium">
+                    Perawatan mendalam (Deep Cleaning) agar sepatu kinclong seperti baru lagi.
                   </p>
                 </div>
               </div>
 
               <!-- Jas, Gaun & Kebaya -->
               <div
-                class="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(244,63,94,0.15)] transition-all duration-500 hover:-translate-y-2 border border-white/50 dark:border-slate-700/50 overflow-hidden cursor-default">
+                class="group relative col-span-2 lg:col-span-1 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-[2rem] p-4 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(244,63,94,0.15)] transition-all duration-500 hover:-translate-y-2 border border-white/50 dark:border-slate-700/50 overflow-hidden cursor-default">
                 <div
                   class="absolute -right-10 -top-10 w-40 h-40 bg-rose-400/20 dark:bg-rose-500/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700">
                 </div>
@@ -638,22 +637,21 @@
                   class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-400 to-rose-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                 </div>
 
-                <div class="relative z-10">
+                <div class="relative z-10 text-center sm:text-left">
                   <div
-                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-50 to-rose-100/50 dark:from-slate-700/50 dark:to-slate-800 flex items-center justify-center mb-6 shadow-sm border border-rose-100/50 dark:border-rose-900/30 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl mx-auto sm:mx-0 bg-gradient-to-br from-rose-50 to-rose-100/50 dark:from-slate-700/50 dark:to-slate-800 flex items-center justify-center mb-3 sm:mb-6 shadow-sm border border-rose-100/50 dark:border-rose-900/30 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                      class="text-rose-500">
+                      class="text-rose-500 w-6 h-6 sm:w-8 sm:h-8">
                       <path
                         d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41l-7.59-7.59a2.41 2.41 0 0 0-3.41 0Z" />
                     </svg>
                   </div>
                   <h3
-                    class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                    class="text-sm sm:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors leading-tight">
                     Jas, Gaun & Kebaya</h3>
-                  <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                    Layanan cuci kering (Dry Cleaning) khusus untuk menjaga serat kain premium agar tidak susut atau
-                    rusak.
+                  <p class="text-slate-500 dark:text-slate-400 text-[10px] sm:text-sm leading-relaxed font-medium">
+                    Cuci kering (Dry Cleaning) khusus jaga serat kain premium agar tak susut atau rusak.
                   </p>
                 </div>
               </div>
@@ -777,7 +775,7 @@
                     referrerpolicy="no-referrer-when-downgrade">
                   </iframe>
                 </div>
-                <a href="https://maps.google.com/?q=Malang" target="_blank"
+                <a href="https://maps.app.goo.gl/42TGvJf8hF9kZLiV6" target="_blank"
                   class="inline-flex items-center gap-2 mt-3 text-sm text-primary-400 hover:text-primary-300 hover:underline">
                   <span>Buka di Aplikasi Maps</span> <span>↗</span>
                 </a>
@@ -897,9 +895,16 @@
                   <input type="text" id="kasir-total-tampil" readonly placeholder="Otomatis"
                     class="w-full px-4 py-2 rounded-lg border border-blue-200 bg-blue-50 dark:bg-slate-700 dark:border-slate-600 dark:text-white font-bold outline-none cursor-not-allowed">
                 </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1 text-blue-800 dark:text-slate-300">Status Pembayaran</label>
+                  <select id="kasir-status-bayar" required
+                    class="w-full px-4 py-2 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    <option value="Belum Lunas">Belum Lunas</option>
+                    <option value="Lunas">Lunas</option>
+                  </select>
+                </div>
                 <button type="submit" id="btn-simpan"
-                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl mt-2 transition shadow-md">Simpan
-                  ke Firebase</button>
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl mt-2 transition shadow-md">Simpan</button>
               </form>
             </div>
 
@@ -929,17 +934,18 @@
                 <table class="w-full min-w-[800px] text-left border-collapse" id="tabel-laporan">
                   <thead class="sticky top-0 bg-blue-50 dark:bg-slate-700 shadow-sm z-10">
                     <tr class="text-blue-900 dark:text-slate-300">
-                      <th class="p-4 font-semibold text-sm whitespace-nowrap">Waktu</th>
-                      <th class="p-4 font-semibold text-sm whitespace-nowrap">Nama</th>
-                      <th class="p-4 font-semibold text-sm whitespace-nowrap">Layanan</th>
-                      <th class="p-4 font-semibold text-sm whitespace-nowrap">Berat</th>
-                      <th class="p-4 font-semibold text-sm whitespace-nowrap">Total Bayar</th>
-                      <th class="p-4 font-semibold text-sm text-center whitespace-nowrap">Aksi</th>
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Waktu</th>
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Nama</th>
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Layanan</th>
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Berat</th>
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Total</th>
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Status</th>
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm text-center whitespace-nowrap">Aksi</th>
                     </tr>
                   </thead>
                   <tbody id="tabel-body" class="divide-y divide-blue-100 dark:divide-slate-700">
                     <tr>
-                      <td colspan="6" class="p-6 text-center text-blue-500">Menghubungkan ke database Firebase...</td>
+                      <td colspan="7" class="p-6 text-center text-blue-500">Menghubungkan ke database Firebase...</td>
                     </tr>
                   </tbody>
                 </table>
@@ -953,10 +959,13 @@
             </div>
           </div>
         </div>
+
+
+      </div>
         <script type="module">
           // 1. IMPORT FIREBASE MODULAR
           import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-          import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+          import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
           // =========================================================================
           // ⚠️ PENTING: GANTI KODE DI BAWAH INI DENGAN CONFIG FIREBASE MILIKMU NANTI
@@ -1022,7 +1031,7 @@
             }
             const hargaSatuan = parseInt(inputLayanan.options[inputLayanan.selectedIndex].getAttribute('data-harga'));
             const berat = parseFloat(inputBerat.value);
-            const total = hargaSatuan * berat;
+            const total = Math.round(hargaSatuan * berat);
             inputTotalTampil.value = "Rp " + total.toLocaleString('id-ID');
           }
 
@@ -1043,7 +1052,7 @@
             });
             renderTabel(); // Panggil fungsi render setelah data diambil
           }, (error) => {
-            tabelBody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-red-500 font-bold bg-red-50 dark:bg-red-900/20">❌ Error Firebase! Pastikan Config kamu benar.</td></tr>`;
+            tabelBody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-red-500 font-bold bg-red-50 dark:bg-red-900/20">❌ Error Firebase! Pastikan Config kamu benar.</td></tr>`;
           });
 
           // Fungsi untuk menampilkan data sesuai filter yang dipilih
@@ -1074,21 +1083,39 @@
             });
 
             if (dataTersaring.length === 0) {
-              tabelBody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-500">Belum ada transaksi untuk periode ini.</td></tr>`;
+              tabelBody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-500">Belum ada transaksi untuk periode ini.</td></tr>`;
             } else {
               dataTersaring.forEach((data) => {
                 dbPesanan.push(data); // Simpan ke array untuk Export PDF
                 totalUang += data.total;
 
+                const isLunas = data.status_bayar === 'Lunas';
+                const bgWarna = isLunas ? 'bg-green-100 text-green-700 border-green-200' : 'bg-red-100 text-red-700 border-red-200';
+                const statusBadge = `
+                  <select onchange='window.toggleStatus("${data.id}", this.value)' class="px-2 py-1 rounded-full text-[10px] md:text-xs font-bold outline-none cursor-pointer border shadow-sm transition-colors text-center appearance-none ${bgWarna}">
+                    <option class="bg-white text-slate-800" value="Belum Lunas" ${!isLunas ? 'selected' : ''}>Belum Lunas</option>
+                    <option class="bg-white text-slate-800" value="Lunas" ${isLunas ? 'selected' : ''}>Lunas</option>
+                  </select>
+                `;
+
                 tabelBody.innerHTML += `
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-          <td class="p-4 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">${data.waktu}</td>
-          <td class="p-4 text-slate-800 dark:text-slate-200 font-medium">${data.nama}</td>
-          <td class="p-4 text-sm text-slate-600 dark:text-slate-400">${data.paket}</td>
-          <td class="p-4 text-slate-800 dark:text-slate-200">${data.berat} kg</td>
-          <td class="p-4 font-bold text-primary-600 dark:text-primary-400">Rp ${data.total.toLocaleString('id-ID')}</td>
-          <td class="p-4 text-center">
-            <button onclick='cetakBluetooth(${JSON.stringify(data)})' class="bg-blue-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:bg-blue-600 transition">Cetak</button>
+          <td class="p-2 md:p-3 text-[10px] md:text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">${data.waktu}</td>
+          <td class="p-2 md:p-3 text-xs md:text-sm text-slate-800 dark:text-slate-200 font-medium">${data.nama}</td>
+          <td class="p-2 md:p-3 text-[10px] md:text-sm text-slate-600 dark:text-slate-400">${data.paket}</td>
+          <td class="p-2 md:p-3 text-[10px] md:text-sm text-slate-800 dark:text-slate-200">${data.berat} kg</td>
+          <td class="p-2 md:p-3 text-[10px] md:text-sm font-bold text-primary-600 dark:text-primary-400">Rp ${data.total.toLocaleString('id-ID')}</td>
+          <td class="p-2 md:p-3 whitespace-nowrap">${statusBadge}</td>
+          <td class="p-2 md:p-3 text-center flex items-center justify-center gap-1.5 md:gap-2">
+            <button onclick='cetakBluetooth(${JSON.stringify(data)})' title="Cetak Struk" class="bg-blue-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-blue-600 transition flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            </button>
+            <button onclick='window.bukaModalEdit(${JSON.stringify(data)})' title="Edit" class="bg-amber-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-amber-600 transition flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+            </button>
+            <button onclick='window.hapusTransaksi("${data.id}")' title="Hapus" class="bg-red-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-red-600 transition flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+            </button>
           </td>
         </tr>
       `;
@@ -1112,7 +1139,9 @@
             const layananTxt = selectLayanan.options[selectLayanan.selectedIndex].text;
             const hargaSatuan = parseInt(selectLayanan.options[selectLayanan.selectedIndex].getAttribute('data-harga'));
             const berat = parseFloat(document.getElementById('kasir-berat').value);
-            const total = hargaSatuan * berat;
+            const total = Math.round(hargaSatuan * berat);
+
+            const statusBayar = document.getElementById('kasir-status-bayar').value;
 
             try {
               await addDoc(collection(db, "kasir"), {
@@ -1121,7 +1150,8 @@
                 nama: nama,
                 paket: layananTxt,
                 berat: berat,
-                total: total
+                total: total,
+                status_bayar: statusBayar
               });
 
               // 👇 INI OBATNYA: Kita tembak langsung ke ID form-nya biar pasti bersih!
@@ -1129,21 +1159,159 @@
               document.getElementById('kasir-total-tampil').value = "";
 
             } catch (e) {
-              alert("Gagal menyimpan: " + e.message);
+              Swal.fire('Gagal!', "Gagal menyimpan: " + e.message, 'error');
             } finally {
               btnSimpan.innerHTML = "Simpan";
               btnSimpan.disabled = false;
             }
           });
 
-          // DELETE: Reset Data Cloud
-          window.bersihkanDataFirebase = async () => {
-            if (confirm("⚠️ YAKIN INGIN MENGHAPUS SEMUA DATA OMZET DI DATABASE CLOUD?")) {
-              const querySnapshot = await getDocs(collection(db, "kasir"));
-              querySnapshot.forEach(async (document) => {
-                await deleteDoc(document.ref);
+          // UPDATE: Toggle Status Langsung dari Tabel
+          window.toggleStatus = async (id, statusBaru) => {
+            try {
+              await updateDoc(doc(db, "kasir", id), {
+                status_bayar: statusBaru
               });
-              alert("Semua data berhasil direset dari Cloud!");
+              // Tabel akan terupdate otomatis via onSnapshot
+            } catch (error) {
+              Swal.fire('Gagal!', error.message, 'error');
+            }
+          };
+
+          // DELETE: Hapus Data Spesifik
+          window.hapusTransaksi = async (id) => {
+            const result = await Swal.fire({
+              title: 'Hapus Nota?',
+              text: "Data yang dihapus tidak bisa dikembalikan!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#ef4444',
+              cancelButtonColor: '#94a3b8',
+              confirmButtonText: 'Ya, hapus!',
+              cancelButtonText: 'Batal'
+            });
+
+            if (result.isConfirmed) {
+              try {
+                await deleteDoc(doc(db, "kasir", id));
+                Swal.fire('Terhapus!', 'Nota berhasil dihapus.', 'success');
+              } catch (e) {
+                Swal.fire('Gagal!', e.message, 'error');
+              }
+            }
+          };
+
+          // UPDATE: Edit Data Transaksi menggunakan SweetAlert2
+          window.bukaModalEdit = (data) => {
+            const opsiLayananHTML = document.getElementById('kasir-layanan').innerHTML;
+
+            Swal.fire({
+              title: 'Edit Transaksi',
+              html: `
+                <div class="space-y-4 text-left mt-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-1 text-slate-700">Nama Pelanggan</label>
+                    <input type="text" id="swal-edit-nama" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none" value="${data.nama}">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-1 text-slate-700">Layanan / Paket</label>
+                    <select id="swal-edit-paket" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none">
+                      ${opsiLayananHTML}
+                    </select>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1 text-slate-700">Berat (Kg)</label>
+                      <input type="number" step="0.1" id="swal-edit-berat" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none" value="${data.berat}">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1 text-slate-700">Total Harga (Rp)</label>
+                      <input type="number" id="swal-edit-total" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none bg-slate-50 cursor-not-allowed" value="${data.total}" readonly>
+                    </div>
+                  </div>
+                </div>
+              `,
+              showCancelButton: true,
+              confirmButtonText: 'Update',
+              cancelButtonText: 'Batal',
+              confirmButtonColor: '#f59e0b',
+              didOpen: () => {
+                const selectPaket = document.getElementById('swal-edit-paket');
+                const inputBerat = document.getElementById('swal-edit-berat');
+                const inputTotal = document.getElementById('swal-edit-total');
+
+                // Pilih opsi yang teksnya sama dengan data.paket
+                for (let i = 0; i < selectPaket.options.length; i++) {
+                  if (selectPaket.options[i].text === data.paket) {
+                    selectPaket.selectedIndex = i;
+                    break;
+                  }
+                }
+
+                // Fungsi hitung otomatis
+                const hitungEditTotal = () => {
+                  if (selectPaket.selectedIndex === 0 || !inputBerat.value) {
+                    inputTotal.value = "";
+                    return;
+                  }
+                  const hargaSatuan = parseInt(selectPaket.options[selectPaket.selectedIndex].getAttribute('data-harga'));
+                  const berat = parseFloat(inputBerat.value);
+                  inputTotal.value = Math.round(hargaSatuan * berat);
+                };
+
+                selectPaket.addEventListener('change', hitungEditTotal);
+                inputBerat.addEventListener('input', hitungEditTotal);
+              },
+              preConfirm: () => {
+                const selectPaket = document.getElementById('swal-edit-paket');
+                const layananTxt = selectPaket.options[selectPaket.selectedIndex].text;
+                return {
+                  nama: document.getElementById('swal-edit-nama').value,
+                  paket: layananTxt,
+                  berat: parseFloat(document.getElementById('swal-edit-berat').value),
+                  total: parseFloat(document.getElementById('swal-edit-total').value)
+                }
+              }
+            }).then(async (result) => {
+              if (result.isConfirmed) {
+                try {
+                  await updateDoc(doc(db, "kasir", data.id), {
+                    nama: result.value.nama,
+                    paket: result.value.paket,
+                    berat: result.value.berat,
+                    total: result.value.total
+                  });
+                  Swal.fire('Berhasil!', 'Data telah diupdate.', 'success');
+                } catch (error) {
+                  Swal.fire('Gagal!', error.message, 'error');
+                }
+              }
+            });
+          };
+
+          // DELETE ALL: Reset Data Cloud
+          window.bersihkanDataFirebase = async () => {
+            const result = await Swal.fire({
+              title: 'Reset Semua Data?',
+              text: "Semua riwayat omzet di Cloud akan terhapus permanen!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#ef4444',
+              cancelButtonColor: '#94a3b8',
+              confirmButtonText: 'Ya, Reset Semua!',
+              cancelButtonText: 'Batal'
+            });
+
+            if (result.isConfirmed) {
+              try {
+                const querySnapshot = await getDocs(collection(db, "kasir"));
+                querySnapshot.forEach(async (document) => {
+                  await deleteDoc(document.ref);
+                });
+                Swal.fire('Direset!', 'Semua data telah dihapus dari Cloud.', 'success');
+              } catch (error) {
+                Swal.fire('Gagal!', error.message, 'error');
+              }
             }
           };
 
@@ -1241,6 +1409,17 @@
           }
 
           window.cetakBluetooth = async (data) => {
+            if (!navigator.bluetooth) {
+              Swal.fire({
+                title: 'Tidak Didukung',
+                html: 'Pencetakan Bluetooth langsung dari web <b>tidak didukung di iPhone (Safari/Chrome iOS)</b>.<br><br>Gunakan perangkat <b>Android</b>, atau gunakan aplikasi browser khusus seperti <b>Bluefy</b> di App Store.',
+                icon: 'warning',
+                confirmButtonColor: '#3b82f6',
+                confirmButtonText: 'Mengerti'
+              });
+              return;
+            }
+            
             try {
               // 1. Dapatkan device (Pairing) HANYA jika belum ada cache
               if (!cachedDevice) {
@@ -1357,13 +1536,13 @@
               }
 
               if (activeBtn) activeBtn.innerText = originalText;
-              alert('✅ Struk berhasil dicetak!');
+              Swal.fire('Berhasil!', 'Struk berhasil dicetak!', 'success');
             } catch (error) {
               console.error(error);
               // Jika error, hapus cache koneksi agar bisa konek ulang
               cachedDevice = null;
-              printCharacteristic = null; // BUGFIX: Sebelumnya tertulis cachedCharacteristic
-              alert(error.message);
+              printCharacteristic = null;
+              Swal.fire('Gagal!', error.message, 'error');
             }
           };
         </script>
