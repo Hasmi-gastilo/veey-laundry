@@ -1476,6 +1476,14 @@
 
               // 4. Format struk 
               // Ganti kembali ke \n (Line Feed murni) karena \r\n terbukti menahan buffer printer sampai penuh (256 bytes) lalu crash.
+              let namaPaket = data.paket;
+              let namaLayanan = "";
+              if (data.paket.includes(" - ")) {
+                let splitData = data.paket.split(" - ");
+                namaPaket = splitData[0];
+                namaLayanan = splitData[1];
+              }
+
               let struk =
                 "================================\n" +
                 "          VEEY LAUNDRY          \n" +
@@ -1485,7 +1493,8 @@
                 "================================\n" +
                 "Waktu : " + data.waktu + "\n" +
                 "Nama  : " + data.nama + "\n" +
-                "Paket : " + data.paket + "\n" +
+                "Paket : " + namaPaket + "\n" +
+                (namaLayanan ? "Layanan: " + namaLayanan + "\n" : "") +
                 "Berat : " + data.berat + " Kg\n" +
                 "--------------------------------\n" +
                 "TOTAL : Rp " + data.total.toLocaleString('id-ID') + "\n" +
