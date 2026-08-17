@@ -1514,9 +1514,9 @@
                 "      Terima Kasih Banyak!      \n\n\n";
 
               const activeBtn = document.activeElement;
-              const originalText = activeBtn ? activeBtn.innerText : '';
+              const originalHTML = activeBtn ? activeBtn.innerHTML : '';
               
-              if (activeBtn) activeBtn.innerText = 'Memproses Logo...';
+              if (activeBtn) activeBtn.innerHTML = '<span class="text-xs font-bold">Proses...</span>';
               
               const encoder = new TextEncoder();
               const textArray = encoder.encode(struk);
@@ -1544,19 +1544,15 @@
                     await printCharacteristic.writeValue(chunk);
                   }
                 } catch (err) {
-                  if (activeBtn) activeBtn.innerText = originalText;
+                  if (activeBtn) activeBtn.innerHTML = originalHTML;
                   throw new Error(`Koneksi putus di bagian ${Math.floor(i / CHUNK_SIZE) + 1} dari ${totalChunks}. Coba restart printer.`);
                 }
-
-                // Update tulisan di tombol agar kita tahu persentasenya
-                let percent = Math.floor(((i + chunk.length) / dataArray.length) * 100);
-                if (activeBtn) activeBtn.innerText = `Cetak ${percent}%`;
 
                 // Jeda lebih cepat (20ms) agar nge-print grafik tidak terlalu lama
                 await new Promise(resolve => setTimeout(resolve, 20));
               }
 
-              if (activeBtn) activeBtn.innerText = originalText;
+              if (activeBtn) activeBtn.innerHTML = originalHTML;
               Swal.fire('Berhasil!', 'Struk berhasil dicetak!', 'success');
             } catch (error) {
               console.error(error);
