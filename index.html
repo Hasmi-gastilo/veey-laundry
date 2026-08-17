@@ -911,8 +911,10 @@
             <div
               class="md:col-span-2 w-full min-w-0 overflow-hidden bg-white dark:bg-slate-800 p-5 rounded-2xl border border-blue-100 dark:border-slate-700 shadow-sm flex flex-col">
               <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3 w-full">
-                <div class="flex items-center gap-3 w-full sm:w-auto">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full sm:w-auto">
                   <h3 class="text-lg font-bold text-blue-900 dark:text-white">Riwayat Transaksi</h3>
+                  <input type="text" id="search-kasir" placeholder="Cari nama atau layanan..." 
+                    class="text-sm px-3 py-1.5 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none w-full sm:w-48 transition-all">
                   <select id="filter-waktu"
                     class="text-sm px-3 py-1.5 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
                     <option value="semua">Semua Waktu</option>
@@ -930,7 +932,7 @@
               </div>
 
               <div
-                class="overflow-x-auto w-full max-w-full rounded-xl border border-blue-200 dark:border-slate-700 h-[300px] overflow-y-auto">
+                class="overflow-x-auto w-full max-w-full rounded-xl border border-blue-200 dark:border-slate-700 h-[500px] overflow-y-auto">
                 <table class="w-full min-w-[800px] text-left border-collapse" id="tabel-laporan">
                   <thead class="sticky top-0 bg-blue-50 dark:bg-slate-700 shadow-sm z-10">
                     <tr class="text-blue-900 dark:text-slate-300">
@@ -952,8 +954,8 @@
               </div>
 
               <div
-                class="mt-4 bg-blue-600 dark:bg-blue-900/60 text-white p-4 rounded-xl font-bold text-xl sm:text-2xl flex justify-between items-center shadow-sm">
-                <span class="text-blue-100 text-base font-medium">Total Omzet:</span>
+                class="mt-4 bg-blue-600 dark:bg-blue-900/60 text-white p-3 rounded-xl font-bold text-lg sm:text-xl flex justify-between items-center shadow-sm">
+                <span class="text-blue-100 text-sm font-medium">Total Omzet:</span>
                 <span id="kasir-omzet">Rp 0</span>
               </div>
             </div>
@@ -1043,6 +1045,7 @@
           // ==========================================
           let semuaDataFirebase = []; // Simpan semua data sementara di sini
           const dropdownFilter = document.getElementById('filter-waktu');
+          const searchKasir = document.getElementById('search-kasir');
 
           const q = query(collection(db, "kasir"), orderBy("timestamp", "desc"));
           onSnapshot(q, (snapshot) => {
@@ -1061,6 +1064,7 @@
             dbPesanan = [];
             let totalUang = 0;
             const filterTipe = dropdownFilter.value;
+            const searchText = searchKasir ? searchKasir.value.toLowerCase() : "";
 
             const waktuSekarang = new Date();
             const bulanSekarang = waktuSekarang.getMonth();
@@ -1068,6 +1072,12 @@
 
             // Proses filter data
             let dataTersaring = semuaDataFirebase.filter((data) => {
+              // Filter Pencarian Text
+              if (searchText) {
+                const matchSearch = data.nama.toLowerCase().includes(searchText) || data.paket.toLowerCase().includes(searchText);
+                if (!matchSearch) return false;
+              }
+
               if (filterTipe === 'semua') return true;
 
               // timestamp kita ubah jadi objek Date untuk dicek bulan & tahunnya
@@ -1127,6 +1137,7 @@
 
           // Tambahkan event listener: Kalau dropdown diganti, tabel otomatis berubah
           dropdownFilter.addEventListener('change', renderTabel);
+          if (searchKasir) searchKasir.addEventListener('input', renderTabel);
 
           // CREATE: Tambah Data Baru ke Firebase
           formKasir.addEventListener('submit', async function (e) {
