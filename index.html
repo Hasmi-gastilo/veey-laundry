@@ -1136,7 +1136,7 @@
 
             const nama = document.getElementById('kasir-nama').value;
             const selectLayanan = document.getElementById('kasir-layanan');
-            const layananTxt = selectLayanan.options[selectLayanan.selectedIndex].text;
+            const layananTxt = selectLayanan.options[selectLayanan.selectedIndex].value;
             const hargaSatuan = parseInt(selectLayanan.options[selectLayanan.selectedIndex].getAttribute('data-harga'));
             const berat = parseFloat(document.getElementById('kasir-berat').value);
             const total = Math.round(hargaSatuan * berat);
@@ -1240,9 +1240,9 @@
                 const inputBerat = document.getElementById('swal-edit-berat');
                 const inputTotal = document.getElementById('swal-edit-total');
 
-                // Pilih opsi yang teksnya sama dengan data.paket
+                // Pilih opsi yang nilainya atau teksnya sama dengan data.paket (untuk backward compatibility)
                 for (let i = 0; i < selectPaket.options.length; i++) {
-                  if (selectPaket.options[i].text === data.paket) {
+                  if (selectPaket.options[i].value === data.paket || selectPaket.options[i].text === data.paket) {
                     selectPaket.selectedIndex = i;
                     break;
                   }
@@ -1264,7 +1264,7 @@
               },
               preConfirm: () => {
                 const selectPaket = document.getElementById('swal-edit-paket');
-                const layananTxt = selectPaket.options[selectPaket.selectedIndex].text;
+                const layananTxt = selectPaket.options[selectPaket.selectedIndex].value;
                 return {
                   nama: document.getElementById('swal-edit-nama').value,
                   paket: layananTxt,
