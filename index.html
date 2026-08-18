@@ -926,6 +926,14 @@
                     <option value="Lunas">Lunas</option>
                   </select>
                 </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1 text-blue-800 dark:text-slate-300">Metode Bayar</label>
+                  <select id="kasir-metode-bayar" required
+                    class="w-full px-4 py-2 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    <option value="Cash">Cash</option>
+                    <option value="Transfer">Transfer</option>
+                  </select>
+                </div>
                 <button type="submit" id="btn-simpan"
                   class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl mt-2 transition shadow-md">Simpan</button>
               </form>
@@ -1177,6 +1185,7 @@
       const total = Math.round(hargaSatuan * berat);
 
       const statusBayar = document.getElementById('kasir-status-bayar').value;
+      const metodeBayar = document.getElementById('kasir-metode-bayar').value;
 
       try {
         await addDoc(collection(db, "kasir"), {
@@ -1186,7 +1195,8 @@
           paket: layananTxt,
           berat: berat,
           total: total,
-          status_bayar: statusBayar
+          status_bayar: statusBayar,
+          metode_bayar: metodeBayar
         });
 
         // 👇 INI OBATNYA: Kita tembak langsung ke ID form-nya biar pasti bersih!
@@ -1264,6 +1274,13 @@
                       <input type="number" id="swal-edit-total" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none bg-slate-50 cursor-not-allowed" value="${data.total}" readonly>
                     </div>
                   </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-1 text-slate-700 mt-4">Metode Bayar</label>
+                    <select id="swal-edit-metode" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none">
+                      <option value="Cash" ${data.metode_bayar === 'Cash' || !data.metode_bayar ? 'selected' : ''}>Cash</option>
+                      <option value="Transfer" ${data.metode_bayar === 'Transfer' ? 'selected' : ''}>Transfer</option>
+                    </select>
+                  </div>
                 </div>
               `,
         showCancelButton: true,
@@ -1304,7 +1321,8 @@
             nama: document.getElementById('swal-edit-nama').value,
             paket: layananTxt,
             berat: parseFloat(document.getElementById('swal-edit-berat').value),
-            total: parseFloat(document.getElementById('swal-edit-total').value)
+            total: parseFloat(document.getElementById('swal-edit-total').value),
+            metode_bayar: document.getElementById('swal-edit-metode').value
           }
         }
       }).then(async (result) => {
@@ -1314,7 +1332,8 @@
               nama: result.value.nama,
               paket: result.value.paket,
               berat: result.value.berat,
-              total: result.value.total
+              total: result.value.total,
+              metode_bayar: result.value.metode_bayar
             });
             Swal.fire('Berhasil!', 'Data telah diupdate.', 'success');
           } catch (error) {
@@ -1530,10 +1549,10 @@
           "Nama  : " + data.nama + "\n" +
           "Paket : " + namaPaket + "\n" +
           (namaLayanan ? "Layanan: " + namaLayanan + "\n" : "") +
-          "Berat : " + data.berat + " Kg\n" +
           "--------------------------------\n" +
           "TOTAL : Rp " + data.total.toLocaleString('id-ID') + "\n" +
           "STATUS: " + (data.status_bayar ? data.status_bayar.toUpperCase() : "BELUM LUNAS") + "\n" +
+          "METODE: " + (data.metode_bayar ? data.metode_bayar.toUpperCase() : "-") + "\n" +
           "================================\n" +
           "      Terima Kasih Banyak!      \n\n\n";
 
