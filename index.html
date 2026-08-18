@@ -973,13 +973,14 @@
                       <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Berat</th>
                       <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Total</th>
                       <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Status</th>
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Metode</th>
                       <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm text-center whitespace-nowrap">Aksi
                       </th>
                     </tr>
                   </thead>
                   <tbody id="tabel-body" class="divide-y divide-blue-100 dark:divide-slate-700">
                     <tr>
-                      <td colspan="7" class="p-6 text-center text-blue-500">Menghubungkan ke database Firebase...</td>
+                      <td colspan="8" class="p-6 text-center text-blue-500">Menghubungkan ke database Firebase...</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1087,7 +1088,7 @@
       });
       renderTabel(); // Panggil fungsi render setelah data diambil
     }, (error) => {
-      tabelBody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-red-500 font-bold bg-red-50 dark:bg-red-900/20">❌ Error Firebase! Pastikan Config kamu benar.</td></tr>`;
+      tabelBody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-red-500 font-bold bg-red-50 dark:bg-red-900/20">❌ Error Firebase! Pastikan Config kamu benar.</td></tr>`;
     });
 
     // Fungsi untuk menampilkan data sesuai filter yang dipilih
@@ -1125,7 +1126,7 @@
       });
 
       if (dataTersaring.length === 0) {
-        tabelBody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-500">Belum ada transaksi untuk periode ini.</td></tr>`;
+        tabelBody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-500">Belum ada transaksi untuk periode ini.</td></tr>`;
       } else {
         dataTersaring.forEach((data) => {
           dbPesanan.push(data); // Simpan ke array untuk Export PDF
@@ -1140,6 +1141,15 @@
                   </select>
                 `;
 
+          const isTransfer = data.metode_bayar === 'Transfer';
+          const metodeWarna = isTransfer ? 'bg-purple-100 text-purple-700 border-purple-200' : 'bg-orange-100 text-orange-700 border-orange-200';
+          const metodeBadge = `
+                  <select onchange='window.toggleMetode("${data.id}", this.value)' class="px-2 py-1 rounded-full text-[10px] md:text-xs font-bold outline-none cursor-pointer border shadow-sm transition-colors text-center appearance-none ${metodeWarna}">
+                    <option class="bg-white text-slate-800" value="Cash" ${!isTransfer ? 'selected' : ''}>Cash</option>
+                    <option class="bg-white text-slate-800" value="Transfer" ${isTransfer ? 'selected' : ''}>Transfer</option>
+                  </select>
+                `;
+
           tabelBody.innerHTML += `
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
           <td class="p-2 md:p-3 text-[10px] md:text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">${data.waktu}</td>
@@ -1148,6 +1158,7 @@
           <td class="p-2 md:p-3 text-[10px] md:text-sm text-slate-800 dark:text-slate-200">${data.berat} kg</td>
           <td class="p-2 md:p-3 text-[10px] md:text-sm font-bold text-primary-600 dark:text-primary-400">Rp ${data.total.toLocaleString('id-ID')}</td>
           <td class="p-2 md:p-3 whitespace-nowrap">${statusBadge}</td>
+          <td class="p-2 md:p-3 whitespace-nowrap">${metodeBadge}</td>
           <td class="p-2 md:p-3 text-center flex items-center justify-center gap-1.5 md:gap-2">
             <button onclick='cetakBluetooth(${JSON.stringify(data)})' title="Cetak Struk" class="bg-blue-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-blue-600 transition flex items-center justify-center">
               <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
@@ -1216,6 +1227,18 @@
       try {
         await updateDoc(doc(db, "kasir", id), {
           status_bayar: statusBaru
+        });
+        // Tabel akan terupdate otomatis via onSnapshot
+      } catch (error) {
+        Swal.fire('Gagal!', error.message, 'error');
+      }
+    };
+
+    // UPDATE: Toggle Metode Pembayaran Langsung dari Tabel
+    window.toggleMetode = async (id, metodeBaru) => {
+      try {
+        await updateDoc(doc(db, "kasir", id), {
+          metode_bayar: metodeBaru
         });
         // Tabel akan terupdate otomatis via onSnapshot
       } catch (error) {
