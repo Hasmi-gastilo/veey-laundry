@@ -1423,74 +1423,143 @@
     };
 
     // Fungsi Cetak Nota Satuan (PDF)
-    window.cetakNotaPDF = (data) => {
-      const { jsPDF } = window.jspdf;
-      // Gunakan ukuran kertas thermal 58mm (kurang lebih lebar 58mm x tinggi 120mm)
-      const doc = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: [58, 120]
+    window.cetakNotaPDF = async (data) => {
+      // 1. Tampilkan opsi ke pengguna
+      const result = await Swal.fire({
+        title: 'Cetak Nota PDF',
+        text: 'Pilih tindakan untuk nota PDF ini',
+        icon: 'question',
+        showCancelButton: true,
+        showDenyButton: true,
+        confirmButtonText: 'Share (WA)',
+        denyButtonText: 'Simpan PDF',
+        cancelButtonText: 'Batal',
+        confirmButtonColor: '#25D366', // WA Green
+        denyButtonColor: '#3b82f6', // Blue
       });
 
-      doc.setFontSize(14);
-      doc.setFont("helvetica", "bold");
-      doc.text('VEEY LAUNDRY', 29, 15, { align: 'center' });
-      
-      doc.setFontSize(7);
-      doc.setFont("helvetica", "normal");
-      doc.text('Jl. Remujung, Jatimulyo, Kec. Lowokwaru', 29, 20, { align: 'center' });
-      doc.text('Malang - WA: 0858-8247-8530', 29, 23, { align: 'center' });
-      
-      doc.text('---------------------------------------------------------', 29, 27, { align: 'center' });
-      
-      doc.text('Waktu : ' + data.waktu, 3, 33);
-      doc.text('Nama  : ' + data.nama, 3, 37);
-      
-      let namaPaket = data.paket;
-      let namaLayanan = "";
-      if (data.paket.includes(" - ")) {
-        let splitData = data.paket.split(" - ");
-        namaPaket = splitData[0];
-        namaLayanan = splitData[1];
-      }
-      
-      doc.text('Paket : ' + namaPaket, 3, 41);
-      if (namaLayanan) doc.text('Layanan : ' + namaLayanan, 3, 45);
-      
-      doc.text('---------------------------------------------------------', 29, 49, { align: 'center' });
-      
-      doc.setFontSize(9);
-      doc.setFont("helvetica", "bold");
-      doc.text('TOTAL : Rp ' + data.total.toLocaleString('id-ID'), 3, 55);
-      
-      doc.setFontSize(7);
-      doc.setFont("helvetica", "bold");
-      doc.text('STATUS: ' + (data.status_bayar ? data.status_bayar.toUpperCase() : "BELUM LUNAS"), 3, 60);
-      
-      doc.text('---------------------------------------------------------', 29, 65, { align: 'center' });
-      doc.setFont("helvetica", "normal");
-      doc.text('Terima Kasih Banyak!', 29, 70, { align: 'center' });
+      if (!result.isConfirmed && !result.isDenied) return;
 
-      const pdfBlob = doc.output('blob');
-      const fileName = `Nota_${data.nama.replace(/\s+/g, '_')}_${new Date().getTime()}.pdf`;
+      Swal.fire({
+        title: 'Memproses PDF...',
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading()
+      });
 
-      if (navigator.share && navigator.canShare) {
-        const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
-        if (navigator.canShare({ files: [file] })) {
-          navigator.share({
-            title: `Nota Laundry - ${data.nama}`,
-            text: `Berikut adalah nota laundry untuk atas nama ${data.nama}`,
-            files: [file]
-          }).catch((err) => {
-            console.log("Share failed, opening in new tab:", err);
-            window.open(URL.createObjectURL(pdfBlob), "_blank");
-          });
-          return;
+      try {
+        const { jsPDF } = window.jspdf;
+        // Gunakan ukuran kertas thermal 58mm
+        const doc = new jsPDF({
+          orientation: "portrait",
+          unit: "mm",
+          format: [58, 140] // Tambah tinggi sedikit untuk menampung logo
+        });
+
+        // 2. Load Logo
+        const img = new Image();
+        img.src = 'logo.png';
+        await new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = resolve; // Tetap lanjut walau gagal load logo
+        });
+
+        let yPos = 5;
+        // Jika logo berhasil diload, tambahkan ke PDF
+        if (img.width > 0) {
+          // Posisi X = (58 - lebarLogo) / 2. Misalnya lebar logo 20mm
+          doc.addImage(img, 'PNG', 19, yPos, 20, 20); 
+          yPos += 26; // Geser teks ke bawah logo
+        } else {
+          yPos += 10;
         }
+
+        // 3. Format Struk
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.text('VEEY LAUNDRY', 29, yPos, { align: 'center' });
+        yPos += 5;
+        
+        doc.setFontSize(7);
+        doc.setFont("helvetica", "normal");
+        doc.text('Jl. Remujung, Jatimulyo, Kec. Lowokwaru', 29, yPos, { align: 'center' });
+        yPos += 3;
+        doc.text('Malang - WA: 0858-8247-8530', 29, yPos, { align: 'center' });
+        yPos += 4;
+        
+        doc.text('---------------------------------------------------------', 29, yPos, { align: 'center' });
+        yPos += 6;
+        
+        doc.text('Waktu : ' + data.waktu, 3, yPos);
+        yPos += 4;
+        doc.text('Nama  : ' + data.nama, 3, yPos);
+        yPos += 4;
+        
+        let namaPaket = data.paket;
+        let namaLayanan = "";
+        if (data.paket.includes(" - ")) {
+          let splitData = data.paket.split(" - ");
+          namaPaket = splitData[0];
+          namaLayanan = splitData[1];
+        }
+        
+        doc.text('Paket : ' + namaPaket, 3, yPos);
+        yPos += 4;
+        if (namaLayanan) {
+          doc.text('Layanan : ' + namaLayanan, 3, yPos);
+          yPos += 4;
+        }
+        
+        doc.text('---------------------------------------------------------', 29, yPos, { align: 'center' });
+        yPos += 6;
+        
+        doc.setFontSize(9);
+        doc.setFont("helvetica", "bold");
+        doc.text('TOTAL : Rp ' + data.total.toLocaleString('id-ID'), 3, yPos);
+        yPos += 5;
+        
+        doc.setFontSize(7);
+        doc.setFont("helvetica", "bold");
+        doc.text('STATUS: ' + (data.status_bayar ? data.status_bayar.toUpperCase() : "BELUM LUNAS"), 3, yPos);
+        yPos += 5;
+        
+        doc.text('---------------------------------------------------------', 29, yPos, { align: 'center' });
+        yPos += 5;
+        doc.setFont("helvetica", "normal");
+        doc.text('Terima Kasih Banyak!', 29, yPos, { align: 'center' });
+
+        const fileName = `Nota_${data.nama.replace(/\s+/g, '_')}_${new Date().getTime()}.pdf`;
+
+        // 4. Eksekusi Pilihan
+        if (result.isConfirmed) {
+          // Share langsung
+          const pdfBlob = doc.output('blob');
+          if (navigator.share && navigator.canShare) {
+            const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
+            if (navigator.canShare({ files: [file] })) {
+              Swal.close();
+              await navigator.share({
+                title: `Nota Laundry - ${data.nama}`,
+                text: `Berikut adalah nota laundry untuk atas nama ${data.nama}`,
+                files: [file]
+              }).catch(e => console.log("Share dibatalkan:", e));
+            } else {
+              Swal.fire('Info', 'Perangkat/Browser ini tidak mendukung share file PDF langsung. PDF akan dibuka di tab baru.', 'info');
+              window.open(URL.createObjectURL(pdfBlob), "_blank");
+            }
+          } else {
+            Swal.fire('Info', 'Browser ini tidak mendukung fitur Share. PDF akan dibuka di tab baru.', 'info');
+            window.open(URL.createObjectURL(pdfBlob), "_blank");
+          }
+        } else if (result.isDenied) {
+          // Download / Simpan
+          doc.save(fileName);
+          Swal.close();
+        }
+
+      } catch (err) {
+        console.error(err);
+        Swal.fire('Error!', 'Gagal memproses PDF', 'error');
       }
-      
-      // Fallback: Buka PDF di tab baru
-      window.open(URL.createObjectURL(pdfBlob), "_blank");
     };
 
     let cachedDevice = null;
