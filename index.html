@@ -967,6 +967,7 @@
                 <table class="w-full min-w-[800px] text-left border-collapse" id="tabel-laporan">
                   <thead class="sticky top-0 bg-blue-50 dark:bg-slate-700 shadow-sm z-10">
                     <tr class="text-blue-900 dark:text-slate-300">
+                      <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap w-10 text-center">No.</th>
                       <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Waktu</th>
                       <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Nama</th>
                       <th class="p-2 md:p-3 font-semibold text-[11px] md:text-sm whitespace-nowrap">Layanan</th>
@@ -980,7 +981,7 @@
                   </thead>
                   <tbody id="tabel-body" class="divide-y divide-blue-100 dark:divide-slate-700">
                     <tr>
-                      <td colspan="8" class="p-6 text-center text-blue-500">Menghubungkan ke database Firebase...</td>
+                      <td colspan="9" class="p-6 text-center text-blue-500">Menghubungkan ke database Firebase...</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1088,7 +1089,7 @@
       });
       renderTabel(); // Panggil fungsi render setelah data diambil
     }, (error) => {
-      tabelBody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-red-500 font-bold bg-red-50 dark:bg-red-900/20">❌ Error Firebase! Pastikan Config kamu benar.</td></tr>`;
+      tabelBody.innerHTML = `<tr><td colspan="9" class="p-6 text-center text-red-500 font-bold bg-red-50 dark:bg-red-900/20">❌ Error Firebase! Pastikan Config kamu benar.</td></tr>`;
     });
 
     // Fungsi untuk menampilkan data sesuai filter yang dipilih
@@ -1126,9 +1127,9 @@
       });
 
       if (dataTersaring.length === 0) {
-        tabelBody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-500">Belum ada transaksi untuk periode ini.</td></tr>`;
+        tabelBody.innerHTML = `<tr><td colspan="9" class="p-6 text-center text-slate-500">Belum ada transaksi untuk periode ini.</td></tr>`;
       } else {
-        dataTersaring.forEach((data) => {
+        dataTersaring.forEach((data, index) => {
           dbPesanan.push(data); // Simpan ke array untuk Export PDF
           totalUang += data.total;
 
@@ -1152,6 +1153,7 @@
 
           tabelBody.innerHTML += `
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+          <td class="p-2 md:p-3 text-[10px] md:text-sm text-center font-bold text-slate-500 dark:text-slate-400">${index + 1}</td>
           <td class="p-2 md:p-3 text-[10px] md:text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">${data.waktu}</td>
           <td class="p-2 md:p-3 text-xs md:text-sm text-slate-800 dark:text-slate-200 font-medium">${data.nama}</td>
           <td class="p-2 md:p-3 text-[10px] md:text-sm text-slate-600 dark:text-slate-400">${data.paket}</td>
@@ -1160,7 +1162,10 @@
           <td class="p-2 md:p-3 whitespace-nowrap">${statusBadge}</td>
           <td class="p-2 md:p-3 whitespace-nowrap">${metodeBadge}</td>
           <td class="p-2 md:p-3 text-center flex items-center justify-center gap-1.5 md:gap-2">
-            <button onclick='cetakBluetooth(${JSON.stringify(data)})' title="Cetak Struk" class="bg-blue-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-blue-600 transition flex items-center justify-center">
+            <button onclick='window.cetakNotaPDF(${JSON.stringify(data)})' title="Download PDF" class="bg-red-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-red-600 transition flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            </button>
+            <button onclick='cetakBluetooth(${JSON.stringify(data)})' title="Cetak Struk Bluetooth" class="bg-blue-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-blue-600 transition flex items-center justify-center">
               <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
             </button>
             <button onclick='window.bukaModalEdit(${JSON.stringify(data)})' title="Edit" class="bg-amber-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-amber-600 transition flex items-center justify-center">
@@ -1418,6 +1423,58 @@
         headStyles: { fillColor: [15, 82, 152] }
       });
       doc.save(`Laporan_Laundry_${new Date().getTime()}.pdf`);
+    };
+
+    // Fungsi Cetak Nota Satuan (PDF)
+    window.cetakNotaPDF = (data) => {
+      const { jsPDF } = window.jspdf;
+      // Gunakan ukuran kertas thermal 58mm (kurang lebih lebar 58mm x tinggi 120mm)
+      const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: [58, 120]
+      });
+
+      doc.setFontSize(14);
+      doc.setFont("helvetica", "bold");
+      doc.text('VEEY LAUNDRY', 29, 15, { align: 'center' });
+      
+      doc.setFontSize(7);
+      doc.setFont("helvetica", "normal");
+      doc.text('Jl. Remujung, Jatimulyo, Kec. Lowokwaru', 29, 20, { align: 'center' });
+      doc.text('Malang - WA: 0858-8247-8530', 29, 23, { align: 'center' });
+      
+      doc.text('---------------------------------------------------------', 29, 27, { align: 'center' });
+      
+      doc.text('Waktu : ' + data.waktu, 3, 33);
+      doc.text('Nama  : ' + data.nama, 3, 37);
+      
+      let namaPaket = data.paket;
+      let namaLayanan = "";
+      if (data.paket.includes(" - ")) {
+        let splitData = data.paket.split(" - ");
+        namaPaket = splitData[0];
+        namaLayanan = splitData[1];
+      }
+      
+      doc.text('Paket : ' + namaPaket, 3, 41);
+      if (namaLayanan) doc.text('Layanan : ' + namaLayanan, 3, 45);
+      
+      doc.text('---------------------------------------------------------', 29, 49, { align: 'center' });
+      
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "bold");
+      doc.text('TOTAL : Rp ' + data.total.toLocaleString('id-ID'), 3, 55);
+      
+      doc.setFontSize(7);
+      doc.setFont("helvetica", "bold");
+      doc.text('STATUS: ' + (data.status_bayar ? data.status_bayar.toUpperCase() : "BELUM LUNAS"), 3, 60);
+      
+      doc.text('---------------------------------------------------------', 29, 65, { align: 'center' });
+      doc.setFont("helvetica", "normal");
+      doc.text('Terima Kasih Banyak!', 29, 70, { align: 'center' });
+
+      doc.save(`Nota_${data.nama}_${new Date().getTime()}.pdf`);
     };
 
     let cachedDevice = null;
