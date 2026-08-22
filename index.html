@@ -1457,6 +1457,7 @@
 
         // 2. Load Logo
         const img = new Image();
+        img.crossOrigin = "Anonymous";
         img.src = 'logo.png';
         await new Promise((resolve) => {
           img.onload = resolve;
@@ -1464,10 +1465,17 @@
         });
 
         let yPos = 5;
-        // Jika logo berhasil diload, tambahkan ke PDF
-        if (img.width > 0) {
+        // Jika logo berhasil diload, convert ke base64 lalu tambahkan ke PDF
+        if (img.naturalWidth > 0) {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          const base64Img = canvas.toDataURL('image/png');
+
           // Posisi X = (58 - lebarLogo) / 2. Misalnya lebar logo 20mm
-          doc.addImage(img, 'PNG', 19, yPos, 20, 20); 
+          doc.addImage(base64Img, 'PNG', 19, yPos, 20, 20); 
           yPos += 26; // Geser teks ke bawah logo
         } else {
           yPos += 10;
