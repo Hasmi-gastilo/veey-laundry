@@ -1474,7 +1474,26 @@
       doc.setFont("helvetica", "normal");
       doc.text('Terima Kasih Banyak!', 29, 70, { align: 'center' });
 
-      doc.save(`Nota_${data.nama}_${new Date().getTime()}.pdf`);
+      const pdfBlob = doc.output('blob');
+      const fileName = `Nota_${data.nama.replace(/\s+/g, '_')}_${new Date().getTime()}.pdf`;
+
+      if (navigator.share && navigator.canShare) {
+        const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
+        if (navigator.canShare({ files: [file] })) {
+          navigator.share({
+            title: `Nota Laundry - ${data.nama}`,
+            text: `Berikut adalah nota laundry untuk atas nama ${data.nama}`,
+            files: [file]
+          }).catch((err) => {
+            console.log("Share failed, opening in new tab:", err);
+            window.open(URL.createObjectURL(pdfBlob), "_blank");
+          });
+          return;
+        }
+      }
+      
+      // Fallback: Buka PDF di tab baru
+      window.open(URL.createObjectURL(pdfBlob), "_blank");
     };
 
     let cachedDevice = null;
