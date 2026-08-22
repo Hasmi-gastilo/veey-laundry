@@ -1477,7 +1477,7 @@
         // 2. Load Logo
         const img = new Image();
         img.crossOrigin = "Anonymous";
-        img.src = 'logo.png';
+        img.src = 'veey.png';
         await new Promise((resolve) => {
           img.onload = resolve;
           img.onerror = resolve; // Tetap lanjut walau gagal load logo
@@ -1493,9 +1493,14 @@
           ctx.drawImage(img, 0, 0);
           const base64Img = canvas.toDataURL('image/png');
 
-          // Posisi X = (58 - lebarLogo) / 2. Misalnya lebar logo 20mm
-          doc.addImage(base64Img, 'PNG', 19, yPos, 20, 20); 
-          yPos += 26; // Geser teks ke bawah logo
+          // Hitung tinggi proporsional berdasarkan lebar 26mm
+          const logoWidth = 26;
+          const logoRatio = img.naturalHeight / img.naturalWidth;
+          const logoHeight = logoWidth * logoRatio;
+          const startX = (58 - logoWidth) / 2;
+
+          doc.addImage(base64Img, 'PNG', startX, yPos, logoWidth, logoHeight); 
+          yPos += logoHeight + 6; // Geser teks ke bawah logo secara dinamis
         } else {
           yPos += 10;
         }
