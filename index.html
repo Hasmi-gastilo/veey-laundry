@@ -862,22 +862,21 @@
             </button>
           </div>
 
-          <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-8 w-full max-w-full">
+          <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-4 gap-4 md:gap-6 w-full max-w-full">
 
             <div
-              class="md:col-span-1 w-full min-w-0 glass-card p-5 md:p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-blue-100 dark:border-slate-700">
-              <h3 class="text-lg font-bold text-blue-900 dark:text-white mb-4 border-b border-blue-100 pb-2">Buat Nota
-                Baru</h3>
-              <form id="form-kasir" class="space-y-4">
+              class="lg:col-span-1 w-full min-w-0 glass-card p-4 md:p-5 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-blue-100 dark:border-slate-700">
+              <h3 class="text-base md:text-lg font-bold text-blue-900 dark:text-white mb-3 border-b border-blue-100 pb-2">Buat Nota Baru</h3>
+              <form id="form-kasir" class="space-y-3">
                 <div>
-                  <label class="block text-sm font-medium mb-1 text-blue-800 dark:text-slate-300">Nama Pelanggan</label>
+                  <label class="block text-[13px] font-medium mb-1 text-blue-800 dark:text-slate-300">Nama Pelanggan</label>
                   <input type="text" id="kasir-nama" required placeholder="Contoh: Budi"
-                    class="w-full px-4 py-2 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    class="w-full px-3 py-1.5 text-sm rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-1 text-blue-800 dark:text-slate-300">Layanan</label>
+                  <label class="block text-[13px] font-medium mb-1 text-blue-800 dark:text-slate-300">Layanan</label>
                   <select id="kasir-layanan" required
-                    class="w-full px-4 py-2 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    class="w-full px-3 py-1.5 text-sm rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
                     <option value="" disabled selected>Pilih Layanan</option>
                     <optgroup label="REGULER 3 HARI">
                       <option value="Reguler - Cuci Kering Setrika" data-harga="5000">Cuci Kering Setrika (Rp 5.000)
@@ -907,40 +906,38 @@
                   </select>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-1 text-blue-800 dark:text-slate-300">Berat (Kg)</label>
+                  <label class="block text-[13px] font-medium mb-1 text-blue-800 dark:text-slate-300">Berat (Kg)</label>
                   <input type="number" id="kasir-berat" required min="1" step="0.1" placeholder="Contoh: 2.5"
-                    class="w-full px-4 py-2 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    class="w-full px-3 py-1.5 text-sm rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-1 text-blue-800 dark:text-slate-300">Total Harga
-                    (Rp)</label>
+                  <label class="block text-[13px] font-medium mb-1 text-blue-800 dark:text-slate-300">Total Harga (Rp)</label>
                   <input type="text" id="kasir-total-tampil" readonly placeholder="Otomatis"
-                    class="w-full px-4 py-2 rounded-lg border border-blue-200 bg-blue-50 dark:bg-slate-700 dark:border-slate-600 dark:text-white font-bold outline-none cursor-not-allowed">
+                    class="w-full px-3 py-1.5 text-sm rounded-lg border border-blue-200 bg-blue-50 dark:bg-slate-700 dark:border-slate-600 dark:text-white font-bold outline-none cursor-not-allowed">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-1 text-blue-800 dark:text-slate-300">Status
-                    Pembayaran</label>
+                  <label class="block text-[13px] font-medium mb-1 text-blue-800 dark:text-slate-300">Status Pembayaran</label>
                   <select id="kasir-status-bayar" required
-                    class="w-full px-4 py-2 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    class="w-full px-3 py-1.5 text-sm rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
                     <option value="Belum Lunas">Belum Lunas</option>
                     <option value="Lunas">Lunas</option>
                   </select>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-1 text-blue-800 dark:text-slate-300">Metode Bayar</label>
+                  <label class="block text-[13px] font-medium mb-1 text-blue-800 dark:text-slate-300">Metode Bayar</label>
                   <select id="kasir-metode-bayar" required
-                    class="w-full px-4 py-2 rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    class="w-full px-3 py-1.5 text-sm rounded-lg border border-blue-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none">
                     <option value="Cash">Cash</option>
                     <option value="Transfer">Transfer</option>
                   </select>
                 </div>
                 <button type="submit" id="btn-simpan"
-                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl mt-2 transition shadow-md">Simpan</button>
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl mt-2 transition shadow-md">Simpan</button>
               </form>
             </div>
 
             <div
-              class="md:col-span-2 w-full min-w-0 overflow-hidden bg-white dark:bg-slate-800 p-5 rounded-2xl border border-blue-100 dark:border-slate-700 shadow-sm flex flex-col">
+              class="lg:col-span-3 w-full min-w-0 overflow-hidden bg-white dark:bg-slate-800 p-4 md:p-5 rounded-2xl border border-blue-100 dark:border-slate-700 shadow-sm flex flex-col">
               <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3 w-full">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full sm:w-auto">
                   <h3 class="text-lg font-bold text-blue-900 dark:text-white">Riwayat Transaksi</h3>
@@ -1153,15 +1150,15 @@
 
           tabelBody.innerHTML += `
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
-          <td class="p-2 md:p-3 text-[10px] md:text-sm text-center font-bold text-slate-500 dark:text-slate-400">${index + 1}</td>
+          <td class="p-2 md:p-3 text-[10px] md:text-sm text-center font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap">${index + 1}</td>
           <td class="p-2 md:p-3 text-[10px] md:text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">${data.waktu}</td>
-          <td class="p-2 md:p-3 text-xs md:text-sm text-slate-800 dark:text-slate-200 font-medium">${data.nama}</td>
-          <td class="p-2 md:p-3 text-[10px] md:text-sm text-slate-600 dark:text-slate-400">${data.paket}</td>
-          <td class="p-2 md:p-3 text-[10px] md:text-sm text-slate-800 dark:text-slate-200">${data.berat} kg</td>
-          <td class="p-2 md:p-3 text-[10px] md:text-sm font-bold text-primary-600 dark:text-primary-400">Rp ${data.total.toLocaleString('id-ID')}</td>
+          <td class="p-2 md:p-3 text-xs md:text-sm text-slate-800 dark:text-slate-200 font-medium whitespace-nowrap">${data.nama}</td>
+          <td class="p-2 md:p-3 text-[10px] md:text-sm text-slate-600 dark:text-slate-400 whitespace-nowrap">${data.paket}</td>
+          <td class="p-2 md:p-3 text-[10px] md:text-sm text-slate-800 dark:text-slate-200 whitespace-nowrap">${data.berat} kg</td>
+          <td class="p-2 md:p-3 text-[10px] md:text-sm font-bold text-primary-600 dark:text-primary-400 whitespace-nowrap">Rp ${data.total.toLocaleString('id-ID')}</td>
           <td class="p-2 md:p-3 whitespace-nowrap">${statusBadge}</td>
           <td class="p-2 md:p-3 whitespace-nowrap">${metodeBadge}</td>
-          <td class="p-2 md:p-3 text-center flex items-center justify-center gap-1.5 md:gap-2">
+          <td class="p-2 md:p-3 text-center flex items-center justify-center gap-1.5 md:gap-2 whitespace-nowrap">
             <button onclick='window.cetakNotaPDF(${JSON.stringify(data)})' title="Download PDF" class="bg-red-500 text-white p-1.5 md:p-2 rounded-lg shadow hover:bg-red-600 transition flex items-center justify-center">
               <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
             </button>
